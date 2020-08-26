@@ -18,8 +18,9 @@ $(document).ready(function() {
         e.preventDefault()
             // Iremos capturar o id do botão clicado, para enviar ao nosso serviço em PHP
         var dados = `id=${$(this).attr('id')}`
+        console.log(dados)
 
-        // Requisição assincrôna para a realização da consulta em banco de dados
+        //Requisição assincrôna para a realização da consulta em banco de dados
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
@@ -43,6 +44,7 @@ $(document).ready(function() {
                     $('#nota').attr('disabled', true)
                     $('#nota').empty()
                     $('#nota').append(`<option>${dados[0].nota}</option>`)
+
 
                     btnClose()
 

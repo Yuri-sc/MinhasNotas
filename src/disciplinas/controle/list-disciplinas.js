@@ -15,9 +15,9 @@ $(document).ready(function() {
                         <td class="d-none d-sm-block">${dados[i].professor}</td>
                         <td class="text-center">${dados[i].nota}</td>
                         <td class="text-center">
-                            <button ${dados[i].id} class="btn btn-info btn-sm btn-view"><i class="mdi mdi-eye"></i></button>
-                            <button ${dados[i].id} class="btn btn-primary btn-sm btn-edit"><i class="mdi mdi-pencil"></i></button>
-                            <button ${dados[i].id} class="btn btn-danger btn-sm btn-delete"><i class="mdi mdi-trash-can"></i></button>
+                            <button id="${dados[i].id}" class="btn btn-info btn-sm btn-view"><i class="mdi mdi-eye"></i></button>
+                            <button id="${dados[i].id}" class="btn btn-primary btn-sm btn-edit"><i class="mdi mdi-pencil"></i></button>
+                            <button id="${dados[i].id}" class="btn btn-danger btn-sm btn-delete"><i class="mdi mdi-trash-can"></i></button>
                         </td>
                     </tr>
                 `
@@ -27,6 +27,7 @@ $(document).ready(function() {
             }
 
             $('body').append('<script src="src/disciplinas/controle/view-disciplinas.js"></script>')
+            $('body').append('<script src="src/disciplinas/controle/edit-disciplinas.js"></script>')
         }
     })
 })
