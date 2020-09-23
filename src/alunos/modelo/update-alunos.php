@@ -1,0 +1,27 @@
+<?php
+ // Iremos conectar nossa função ao banco de dados
+    include('../../conexao/conn.php');
+        $id = $_REQUEST['id'];
+        $nome = $_REQUEST['nome'];
+        $curso = $_REQUEST['curso'];
+        $tipo = $_REQUEST['tipo'];
+ 
+ // Verificando se os campos foram preenchidos
+    if(strlen($id) == 0 || strlen($nome) == 0 || strlen($curso) == 0){
+        $dados = array(
+            'tipo' => 'alert-warning',
+            'mensagem' => 'Por favor preencha todo o formulário!'
+        );
+    }else{
+ 
+ // Criaremos uma variável para receber os comandos SQL
+    $sql = "UPDATE alunos SET nome = '".$nome."', curso = '".$curso."', tipo = ".$tipo." WHERE id = ".$id."";
+ 
+    // Iremos testar a nossa linha SQL, diretamente no banco de dados
+    if(mysqli_query($conecta, $sql)){
+        $dados = array('return' => true);
+    }else{
+    $dados = array('return' => false);
+    }
+    }
+    echo json_encode($dados);
