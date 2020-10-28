@@ -14,6 +14,15 @@
      $resultado = mysqli_query($conecta, $sql);
 
      if($resultado && mysqli_num_rows($resultado)>0){
+
+        while($dados = mysqli_fetch_array($resultado)){
+            session_start(); //Estamos iniciando uma nova sessão vazia
+         $_SESSION['id'] = $dados['id'];
+         $_SESSION['nome'] = $dados['nome'];
+         $_SESSION['curso'] = $dados['curso'];
+         $_SESSION['tipo'] = $dados['tipo'];
+        }
+        
          $dados = array('result'  => true);
      }else{
          $dados = array('result' => false);
