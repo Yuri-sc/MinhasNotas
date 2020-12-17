@@ -1,17 +1,21 @@
 $(document).ready(function() {
 
     // Monitorar o clique em cima do botão com a classe btn-save
-    $('.btn-save').click(function(e) {
+    $('#adiciona-alunos').submit(function(e) {
         e.preventDefault()
 
         // Iremos criar uma variável que receberá todas as informações do formulário e os transformará em array
-        let dados = $('#adiciona-alunos').serialize()
+        var dados = new FormData(document.getElementById("adiciona-alunos"))
 
+        // console.log(dados)
 
         $.ajax({
             type: 'POST',
             dataType: 'JSON',
-            assync: true,
+            mimeType: 'multipart/form-data',
+            contentType: false,
+            cache: false,
+            processData: false,
             data: dados,
             url: 'src/alunos/modelo/adiciona-alunos.php',
             success: function(dados) {
@@ -24,10 +28,11 @@ $(document).ready(function() {
                         </button>
                 </div>
                 `)
+
+                $('.btn-save').show()
                     // Limpando os campos do nosso formulário
                 $('#nome').val('')
                 $('#curso').val('')
-
             }
         })
     })
